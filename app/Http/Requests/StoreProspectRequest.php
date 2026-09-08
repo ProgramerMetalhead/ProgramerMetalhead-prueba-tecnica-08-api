@@ -12,7 +12,7 @@ class StoreProspectRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return false;
+        return true;
     }
 
     /**
@@ -23,7 +23,8 @@ class StoreProspectRequest extends FormRequest
     public function rules(): array
     {
         return [
-            //
+            'name' => ['required', 'string', 'max:255'],
+            'phone' => ['required', 'digits:10', 'unique:prospects,phone'],
         ];
     }
 }
