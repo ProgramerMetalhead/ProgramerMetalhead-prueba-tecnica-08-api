@@ -5,45 +5,19 @@ namespace App\Http\Controllers;
 use App\Models\Prospect;
 use Illuminate\Http\Request;
 
-class ProspectController
+class ProspectController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
-    public function index()
-    {
-        //
-    }
-
     /**
      * Store a newly created resource in storage.
      */
     public function store(Request $request)
     {
-        //
+        $prospect = Prospect::create($request->validated());
+
+        return response()->json([
+            'message' => 'Prospecto registrado correctamente.',
+            'data' => $prospect
+        ], 201);
     }
 
-    /**
-     * Display the specified resource.
-     */
-    public function show(Prospect $prospect)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(Request $request, Prospect $prospect)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(Prospect $prospect)
-    {
-        //
-    }
 }
